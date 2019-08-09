@@ -1,0 +1,57 @@
+<html>
+{{> header}}
+{{> nav}}
+
+
+
+<body>
+   
+
+
+    <div class="cardDisplay">
+    {{#newTrips}}
+
+        <div class="card" style="width: 18rem;">
+            <img src={{url}} class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{name}}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <form action='/users/delete-trip' method="POST">
+                    <input type="hidden" name="tripName" value="{{tripID}}">
+                    <button type="Delete">Delete</button>
+                </form>
+            </div>
+        </div>
+
+    {{/newTrips}}
+</div>
+
+
+
+
+
+
+
+
+</body>
+
+</html>
+<!--
+      <form action="/users/logout" class="form-inline my-2 my-lg-0" method="GET">
+        <button class="btn btn-sm btn-outline-secondary my-2 my-sm-0" type="submit" value="Log Out">Log Out</button>
+      </form>
+
+
+    <div class="card" style="width: 18rem;">
+        <img src="{{url}}" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{name}}</h5>
+                <p class="card-text">{{start}} | {{end}}</p>
+                <form action='/users/delete-trip' method="POST">                    
+                    <input type="submit" value="Delete">
+                    <input type="hidden" name="tripName" value="{{tripID}}">
+                </form>   
+            </div>
+    </div>
+
+-->

@@ -1,0 +1,44 @@
+<html>
+{{> header}}
+{{> nav}}
+
+
+
+<body>
+
+<div class="container">
+    <form action="/users/add-trip" method="POST">
+     <div class="form-group row">
+       <label for="colFormLabel" class="col-sm-2 col-form-label" >Trip Name</label>
+       <div class="col-sm-10">
+         <input type="text" class="form-control" id="colFormLabel" name="name" placeholder="Trip Name">
+       </div>
+     </div>
+     <div class="form-group row">
+       <label for="colFormLabel" class="col-sm-2 col-form-label">Start Date</label>
+       <div class="col-sm-10">
+         <input type="text" class="form-control" id="colFormLabel"  name="start" placeholder="Start Date">
+       </div>
+     </div>
+     <div class="form-group row">
+       <label for="colFormLabel" class="col-sm-2 col-form-label" >End Date</label>
+       <div class="col-sm-10">
+         <input type="text" class="form-control" id="colFormLabel" placeholder="End Date" name="end">
+       </div>
+     </div>
+     <div class="form-group row">
+       <label for="colFormLabel" class="col-sm-2 col-form-label" >Image URL</label>
+       <div class="col-sm-10">
+         <input type="text" class="form-control" id="colFormLabel" name="url" placeholder="Image URL">
+       </div>
+     </div>   
+
+     <button type="submit" class="btn btn-primary mb-2">Submit</button>
+    </form>
+
+</div>
+
+
+</body>
+
+</html>
