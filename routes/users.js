@@ -1,12 +1,12 @@
 const session = require('express-session')
-
 const express = require('express')
-
 const router = express.Router()
-
+const Trip = require('../models/trip')
 router.use(express.urlencoded())
 
-const Trip = require('../models/trip')
+
+
+
 
 router.use(session({
     secret: 'keyboard cat',
@@ -17,6 +17,10 @@ router.use(session({
 
 router.get('/', (req, res) => {
     res.render('users')
+})
+
+router.get('/chat', authenticate, (req, res) => {
+    res.render('chat', {username: req.session.username})
 })
 
 //middleware
@@ -99,8 +103,8 @@ router.post('/add-trip', (req, res) => {
     tripList.push(newTrip)
     //put something in the session
     if(req.session){ //check if session is available
-        req.session.tripName = name
-}
+        req.session.name = name
+}   
 
     res.redirect('viewTrips')
 })
@@ -122,6 +126,8 @@ router.post('/delete-trip', (req, res) => {
     })
     res.redirect('viewTrips')
 })
+
+
 
 
 module.exports = router

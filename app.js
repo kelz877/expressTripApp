@@ -5,6 +5,26 @@ const path = require('path')
 const Trip = require('./models/trip')
 const userRoutes = require('./routes/users')
 const session = require('express-session')
+const http = require('http').createServer(app)
+app.use(express.urlencoded())
+
+const io = require('socket.io')(http)
+
+
+io.on('connection', (socket) => {
+    console.log("You are connected")
+
+    socket.on("tripChat",(message)=> {
+        console.log(message)
+        //send message back to the client
+        io.emit('tripChat', message)
+    })
+})
+
+
+
+
+
 app.use(express.static('static'))
 app.use('/users',userRoutes)
 
@@ -39,6 +59,6 @@ app.get('/', (req, res) => {
 
 
 
-app.listen(3000, () => {
+http.listen(3000, () => {
     console.log("Server is running successfully")
 })
