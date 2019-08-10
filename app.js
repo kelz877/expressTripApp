@@ -11,16 +11,23 @@ app.use(express.urlencoded())
 const io = require('socket.io')(http)
 
 
+let userCount = 0;
+
+
 io.on('connection', (socket) => {
     console.log("You are connected")
-
+    userCount++;
+    socket.emit('userCount', {userCount: userCount});
+    socket.on('disconnect', function(){
+        userCount--;
+        socket.emit('userCount', {userCoun: userCount})
+    })
     socket.on("tripChat",(message)=> {
         console.log(message)
         //send message back to the client
         io.emit('tripChat', message)
     })
 })
-
 
 
 
